@@ -68,7 +68,7 @@ print(res)
 res = sol.spiralOrder([[1,2,3],[4,5,6],[7,8,9]])
 print(res)
 
-# in this iteration of spiralOrder we set the boundaries using top, bottom, left and right
+# in this iteration of spiralOrder we set the boundaries using top, bottom, left and right thing of a square/rectangle that shrinks as we move along the spiral
 class Solution2:
     def spiralOrder(self, matrix: list[list[int]]) -> list[int]:
         rows = len(matrix)
