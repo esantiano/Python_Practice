@@ -37,6 +37,18 @@ class Solution:
             # for the first column: 1 + 1 = 0 carry(1)
             # for the second column: carry(1) + (1 + 1) 0 = 1 carry(1)
             # for the third column: nothing(0) + carry(1) = 1
+            # This line of code,
+            # carry = carry // 2, determines the carry to the next position in the binary addition.
+            # In binary arithmetic, when you add two bits (and a possible carry from the previous position), the sum can be 0, 1, 2, or 3:
+            #     0 + 0 + 0 = 0 (binary 0)
+            #     0 + 0 + 1 = 1 (binary 1)
+            #     0 + 1 + 1 = 2 (binary 10)
+            #     1 + 1 + 1 = 3 (binary 11) 
+
+            # The rightmost digit of the binary sum becomes the current digit in the result, and the leftmost digit becomes the carry to the next position. 
+            # The // 2 operation (integer division) correctly calculates this carry:
+            #     If carry is 0 or 1, carry // 2 is 0, so the carry is 0.
+            #     If carry is 2 or 3, carry // 2 is 1, so the carry is 1. 
             i-=1
             j-=1
 
