@@ -1,7 +1,7 @@
 # Time O(N) - we need to iterate through nums at least once
 # Space O(1) - can be done in place
 class Solution:
-    def moveZeroes(self, nums: List[int]) -> None:
+    def moveZeroes(self, nums: list[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
