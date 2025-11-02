@@ -1,3 +1,4 @@
+# Practice deleting elements in place without explicitly using two pointers
 # Time O(n^2) - worst time complexity since we need to loop through elements ahead of val to overwrite val at its index
 # Space O(1) - no extra space 
 class Solution:
