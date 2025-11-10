@@ -17,16 +17,19 @@ class Solution:
     def reverseList(self, head: [ListNode]) -> [ListNode]:
         if head is None:
             return None
-        curHead = head
-        while head.next != None:
-            p = head.next
-            head.next = p.next
-            p.next = curHead
-            curHead = p
-        while curHead != None:
-            print(curHead.val, end=" -> ")
-            curHead = curHead.next
-        return curHead
+        
+        prev = None
+        cur = head
+        while cur != None:
+            nextTemp = cur.next
+            # prev.next = nextTemp, we NEVER want to assign prev.next, this will break the chain and mutate it incorrectly
+            cur.next = prev 
+            prev = cur
+            cur = nextTemp
+        while cur != None:
+            print(cur.val, end=" -> ")
+            cur = cur.next
+        return cur
 # --- Example Usage ---
 node1 = ListNode(1)
 node2 = ListNode(2)
