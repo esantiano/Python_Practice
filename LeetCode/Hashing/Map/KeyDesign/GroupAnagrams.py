@@ -28,6 +28,6 @@ class Solution:
         for s in strs:
             key = "".join(sorted(s))
             if key not in string_map:
-                string_map[key]=[s]
+                string_map[key]=[]
             string_map[key].append(s)
-        return [string_map.values()]
+        return list(string_map.values())
