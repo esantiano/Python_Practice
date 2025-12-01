@@ -8,6 +8,7 @@ class TreeNode:
 # base case? the root is none so we return 0 
 # recursive call on left and right nodes. We add 1 because the current node itself contributes to the depth of the tree.
 # return the maximum between the left and right nodes
+from typing import Optional
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if root is None:
