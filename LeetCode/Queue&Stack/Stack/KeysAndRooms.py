@@ -12,7 +12,7 @@
 # if we have keys to other rooms we add those rooms to the stack 
 # once we access the room on the stack we'll change the room visited status 
 # we'll determine if we are able to go through all the rooms based on the list
-
+from typing import List
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         n = len(rooms)
