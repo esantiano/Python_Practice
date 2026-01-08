@@ -36,7 +36,7 @@ class Solution:
                 heapq.heappop(max_heap)
         
         indexes = []
-        while max_heap:
+        while max_heap: # we use a while loop rather than a for loop to unpack the max_heap to maintain the order of the nodes.
             strength,i = heapq.heappop(max_heap)
             indexes.append(-i)
         
