@@ -1,7 +1,7 @@
 # Time: O(log2N)
 #   We use binary search to reduce the search space for every iteration
 # Space: O(1)
-# Algorithm: 
+# Notes: 
 #   We must use the fact that nums[i] != nums[i+1].
 #   We only need to compare nums[i] to nums[i+1]. 
 #   Reasoning behind this: 
@@ -14,7 +14,11 @@
 #   We continue until we reduce the search space to 1 number which must be a peak.
 from typing import List
 class Solution:
-    def findPeakElement(self, nums: List[int]) -> int:
+# Algorithm:
+#   Search space is entire nums list
+#   We use binary search to narrow the index down to one value.
+#   Here we must compare neighbors on both sides of mid to determine if we have found a peak.
+    def findPeakElement1(self, nums: List[int]) -> int:
         left, right = 0, len(nums)-1
         while left<right:
             mid = left + (right-left)//2
@@ -25,3 +29,23 @@ class Solution:
             else:
                 right = mid
         return left
+# Algorithm:
+#   In this algorithm we use the same search space in the previous algorithm
+#   We use binary search to find a structural property (direction/slope)
+#   We accomplish this by comparing the midpoint to its right hand neighbor to determine the direction to search
+#   We continue until we have 2 elements to compare in the post process 
+#   After we determine which two values are likely to be the peak value we compare the final values and return the peaks index
+    def findPeakElement2(self, nums: List[int]) -> int:
+        L, R = 0, len(nums)-1
+        while L + 1 < R:
+            M = L + (R-L)//2
+            if nums[M] < nums[M+1]:
+                L = M
+            else:
+                R = M
+            
+            
+        if nums[L] > nums[R]:
+            return L
+        return R
+    
