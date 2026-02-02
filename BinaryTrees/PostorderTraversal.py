@@ -35,12 +35,13 @@ class Solution:
         return result
     # Algorithm:
     # Another modified version of preorder iterative algorithm.
-    # If we have a valid node
+    # This agorithm results in a reversed postorder list: N -> R -> L
+    # in order to obtain the correct order we have to reverse the list once all nodes have been processed.
     # we place the root value in the result list first,
-    # then place the root node in the stack of nodes to process,
-    # then move right to the right subtree. 
-    # otherwise we remove the top node on the stack and move to the left subtree 
-    # the resulting list is in reversed postorder.
+    # then place the root node in the stack of nodes to process, we do this to be able to process the nodes left subtree
+    # then move right to the right subtree, 
+    # once we finish processing the right subtree we can process the left subtree 
+    # repeat above until we have processed all nodes in the tree 
     def postorderTraversalIterative2(self, root):
         result = []
         nxt = []
@@ -48,11 +49,11 @@ class Solution:
 
         while cur or nxt:
             if cur:
-                result.append(cur.val)
-                nxt.append(cur) # even though we have already added the node value to the result we place it in the stack to be able to revisit it and process its left subtree
-                cur = cur.right # we continue on to the right subtree first 
-            else: # here we have run into None so we go back to the root node and process the left subtree 
-                cur = nxt.pop() 
-                cur = cur.left
+                result.append(cur.val) # -> N 
+                nxt.append(cur) # nxt = [N{L,R}]
+                cur = cur.right # N -> R
+            else:
+                cur = nxt.pop() # N 
+                cur = cur.left # N -> R -> L
         result.reverse()
         return result
