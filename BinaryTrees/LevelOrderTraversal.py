@@ -29,20 +29,22 @@ class Solution:
         result.append(cur_list)
         return result
     # Algorithm:
-    # In the recursive method we must use a helper function to add lists of different levels to the result.
-    # Starting at the root node at level 0.
-    # The helper function takes in the current node and the level which the node is located. 
-    # We initialize the list that the node value will be placed in by comparing the size of the current list to the level (now we have an indexed list we can place the node values into)
-    # place the node value into its correctly indexed list and then check for subtrees 
-    # to handle the subtrees we recursively call the function on the left and right subtrees as well as increment the level they are located. 
+    # For the recursive solution we use a helper function to create the level list for the current level.
+    # The function will use the current node and the level the node is located at.
+    # Start with a base case null check.
+    # A new list is created for the current level if the size of the resulting list
+    # matches the current level. The result will look like lists within a list.
+    # We then add the node to its indexed list within the result. 
+    # Finally we check for left and right subtrees and recursively call the function on 
+    # those nodes as well as the level those nodes are located. The level moves down one or increments.
+    # We start the recursion at the root node at level 0.
     def levelOrderRecursive(self, root: Optional[TreeNode]) -> List[List[int]]:
         result = []
-        if root is None:
-            return result
         def addList(node, level):
+            if root is None:
+                return
             if level == len(result):
                 result.append([])
-            
             result[level].append(node.val)
             if node.left:
                 addList(node.left,level+1)
